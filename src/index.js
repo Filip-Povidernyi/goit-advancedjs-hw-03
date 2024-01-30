@@ -17,8 +17,8 @@ async function markupCreate() {
         renBreeds(breeds);
         selector.style.display = 'flex';
         slimSelect();
-    } catch (error) {
-        handlerError(error);
+    } catch {
+        handlerError();
     } finally {
         loader.classList.add('is-hidden');
     };
@@ -34,7 +34,7 @@ function renBreeds(breeds) {
             return `<option value="${id}">${name}</option>`;
         })
         .join('');
-    selector.innerHTML = `<select class="breed-select" id="selectElem">${markup}</select>`;
+    selector.innerHTML = `<select class="breed-select" id="selectElem" placeholder='Cat change'>${markup}</select>`;
 };
 
 async function selectorHandler(event) {
