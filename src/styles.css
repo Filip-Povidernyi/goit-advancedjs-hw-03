@@ -37,7 +37,7 @@ img {
 }
 
 .breed-select:hover {
-    background-color: rgba(20, 24, 101, 0.8);
+    /* background-color: rgba(20, 24, 101, 0.8); */
     color: white;
 }
 
@@ -50,7 +50,7 @@ img {
     justify-content: center;
     display: flex;
     width: 800px;
-    /* background-color: rgba(17, 73, 41, 0.9); */
+    background-color: rgba(17, 73, 41, 0.9);
 }
 
 .breed-info {

@@ -1,7 +1,9 @@
 import { fetchBreeds, fetchCatByBreed } from "./cat-api";
 import './styles.css';
 import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 import SlimSelect from 'slim-select';
+import './slimselect.css';
 
 const selector = document.querySelector('.breed-select');
 const loader = document.querySelector('.loader');
@@ -9,23 +11,25 @@ const divCatInfo = document.querySelector('.cat-info');
 const error = document.querySelector('.error');
 
 error.classList.add('is-hidden');
+selector.classList.add('is-hidden');
 
 async function markupCreate() {
     try {
         const breeds = await fetchBreeds();
-        loader.style.display = 'none';
         renBreeds(breeds);
         selector.style.display = 'flex';
         slimSelect();
-    } catch {
-        handlerError();
+    } catch (error) {
+        handlerError(`${error}! Breeds error`);
     } finally {
         loader.classList.add('is-hidden');
+        selector.classList.remove('is-hidden');
     };
 };
 
 
 document.addEventListener('DOMContentLoaded', markupCreate);
+
 selector.addEventListener('change', selectorHandler);
 
 function renBreeds(breeds) {
@@ -40,6 +44,7 @@ function renBreeds(breeds) {
 async function selectorHandler(event) {
 
     try {
+        loader.classList.remove('is-hidden');
         event.preventDefault();
         const breedId = event.currentTarget.value
         await fetchCatByBreed(breedId)
@@ -56,19 +61,26 @@ async function selectorHandler(event) {
               `;
                 divCatInfo.innerHTML = markup;
             });
-    } catch {
-        handlerError();
-    };
+    } catch (error) {
+        handlerError(`${error}! Cat by breed error`);
+    } finally {
+        loader.classList.add('is-hidden');
+    }
 };
 
 function slimSelect() {
-    new SlimSelect('.breed-select');
+    new SlimSelect({
+        select: '.breed-select',
+        settings: {
+            placeholderText: 'Search breeds',
+        }
+    });
 };
 
-function handlerError() {
+function handlerError(error) {
 
     iziToast.error({
-        message: 'Error fetching cat information! Try again!',
+        message: `${error} fetching information! Try again!`,
         position: 'topRight',
     });
 };
