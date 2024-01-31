@@ -36,7 +36,8 @@
         min-height:var(--ss-main-height);
         /* width:100%; */
         padding:var(--ss-spacing-s);
-        cursor:pointer;border:1px solid var(--ss-border-color);
+        cursor:pointer;
+        border:1px solid var(--ss-border-color);
         border-radius:var(--ss-border-radius);
         background-color:var(--ss-bg-color);
         outline:0;
