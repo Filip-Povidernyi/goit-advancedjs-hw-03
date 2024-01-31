@@ -30,7 +30,7 @@ img {
 }
 
 .breed-select {
-    width: 400px;
+    max-width: 30%;
     overflow: hidden;
     font-weight: 400;
     font-size: 16px;

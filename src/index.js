@@ -38,7 +38,7 @@ function renBreeds(breeds) {
             return `<option value="${id}">${name}</option>`;
         })
         .join('');
-    selector.innerHTML = `<select class="breed-select" id="selectElem" placeholder='Cat change'>${markup}</select>`;
+    selector.innerHTML = `<select class="breed-select" id="selectElem" placeholder="Cat change">${markup}</select>`;
 };
 
 async function selectorHandler(event) {
