@@ -42,11 +42,11 @@ function renBreeds(breeds) {
 };
 
 async function selectorHandler(event) {
-
+    console.dir(event.currentTarget);
+    loader.classList.remove('is-hidden');
+    event.preventDefault();
+    const breedId = event.currentTarget.value
     try {
-        loader.classList.remove('is-hidden');
-        event.preventDefault();
-        const breedId = event.currentTarget.value
         await fetchCatByBreed(breedId)
             .then(data => {
                 divCatInfo.style.display = 'flex';
@@ -78,9 +78,10 @@ function slimSelect() {
 };
 
 function handlerError(error) {
-
+    divCatInfo.innerHTML = '';
+    selector.style.display = 'none';
     iziToast.error({
         message: `${error} fetching information! Try again!`,
-        position: 'topRight',
+        position: 'topLeft',
     });
 };
