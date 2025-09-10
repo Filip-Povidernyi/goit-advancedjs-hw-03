@@ -1,4 +1,9 @@
 body {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    padding: 40px;
     background: #fff;
     height: 100vh;
     margin: 0;
@@ -42,10 +47,13 @@ img {
 }
 
 .cat-img {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
     max-width: 350px;
 }
 
 .cat-info {
+    border-radius: 8px;
     position: relative;
     justify-content: center;
     display: flex;
@@ -54,6 +62,8 @@ img {
 }
 
 .breed-info {
+    display: flex;
+    flex-direction: column;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -169,5 +179,8 @@ img {
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+}
+.cover {
+    display: none !important;
 }
 
